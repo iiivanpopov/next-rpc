@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Presets {
+  id             Int      @id @default(autoincrement()) @map("id")
+  state          String   @map("state")
+  details        String   @map("details")
+  largeImageKey  String   @map("large_image_key")
+  largeImageText String   @map("large_image_text")
+  smallImageKey  String   @map("small_image_key")
+  smallImageText String   @map("small_image_text")
+  buttonOneLabel String   @map("button_one_label")
+  buttonOneUrl   String   @map("button_one_url")
+  buttonTwoLabel String   @map("button_two_label")
+  buttonTwoUrl   String   @map("button_two_url")
+  activityType   Int      @map("activity_type")
+  clientId       String   @map("client_id")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("presets")
+}
